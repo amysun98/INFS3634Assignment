@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_sleep"
+        android:icon="@drawable/ic_sleep_black_24dp"
+        android:title="@string/title_sleep"/>
+
+    <item
+        android:id="@+id/navigation_water"
+        android:icon="@drawable/ic_water_drop_black_24dp"
+        android:title="@string/title_water"/>
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_home"/>
+
+    <item
+        android:id="@+id/navigation_step"
+        android:icon="@drawable/ic_running_black_24dp"
+        android:title="@string/title_step"/>
+
+    <item
+        android:id="@+id/navigation_study"
+        android:icon="@drawable/ic_open_book_black_24dp"
+        android:title="@string/title_study"/>
+
+
+
+</menu>
