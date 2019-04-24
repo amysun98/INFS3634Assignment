@@ -1,5 +1,6 @@
 package com.example.wellnessapp;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -10,6 +11,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -77,6 +79,8 @@ public class SleepFragment extends Fragment {
             public void onClick(View v) {
 
                 //convert string of textView to number int
+                InputMethodManager inputManager = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                 int startingH = Integer.parseInt(startH.getText().toString());
                 int endingH = Integer.parseInt(endH.getText().toString());
                 int startingM = Integer.parseInt(startM.getText().toString());

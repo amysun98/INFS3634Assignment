@@ -96,12 +96,13 @@ public class ListActivityData extends Fragment {
 
                 Bundle b = new Bundle();
                 b.putString("selectedEntry", entry);
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                Fragment editActivityData = new EditActivityData();
-                editActivityData.setArguments(b);
-                getFragmentManager().beginTransaction().replace(R.id.frame_container, editActivityData);
-                transaction.addToBackStack(null);
-                transaction.commit();
+                Fragment fragment = new EditActivityData();
+                loadFragment(fragment,b);
+//
+//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                getFragmentManager().beginTransaction().replace(R.id.frame_container, fragment);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
             }
         });
     }
@@ -143,11 +144,12 @@ public class ListActivityData extends Fragment {
 
     }
 
-//    private void loadFragment(Fragment fragment) {
-//        // load fragment
-//        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//        transaction.replace(R.id.frame_container, fragment);
+    private void loadFragment(Fragment fragment, Bundle b) {
+        // load fragment
+        fragment.setArguments(b);
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_container, fragment);
 //        transaction.addToBackStack(null);
-//        transaction.commit();
-//    }
+        transaction.commit();
+    }
 }

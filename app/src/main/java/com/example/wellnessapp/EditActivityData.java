@@ -37,9 +37,8 @@ public class EditActivityData extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle b = this.getArguments();
-        if(b != null){
-            selectedEntry =b.getString("selectedEntry");
-        }
+        selectedEntry =b.getString("selectedEntry");
+
     }
 
     @Override
@@ -79,7 +78,7 @@ public class EditActivityData extends Fragment {
         // load fragment
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container, fragment);
-        transaction.addToBackStack(null);
+//        transaction.addToBackStack(null);
         transaction.commit();
     }
 }

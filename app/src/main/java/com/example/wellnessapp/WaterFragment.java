@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -63,9 +64,9 @@ public class WaterFragment extends Fragment {
         } else {
             mCounterDate = currentTime;
             mWaterCount = 0;
+            getImage(mWaterCount);
             mWaterTotal = rootView.findViewById(R.id.tvWaterTotal);
             mWaterTotal.setText("You've had " + mWaterCount + " cups of water today!");
-
             SharedPreferences.Editor editor = dateSharedPref.edit();
             editor.remove("com.example.waterCounter.dateSharedPref");
             editor.putString("com.example.waterCounter.dateSharedPref", currentTime);
@@ -81,6 +82,7 @@ public class WaterFragment extends Fragment {
 
                 mWaterCount++;
                 mWaterTotal.setText("You've had " + mWaterCount + " cups of water today!");
+                getImage(mWaterCount);
                 SharedPreferences.Editor editor = wcSharedPref.edit();
                 editor.remove("com.example.waterCounter.wcSharedPref");
                 editor.putInt("com.example.waterCounter.wcSharedPref", mWaterCount);
@@ -91,4 +93,99 @@ public class WaterFragment extends Fragment {
 
     }
 
+    public void getImage (int mWaterCount) {
+        switch (mWaterCount) {
+
+            case 0:
+
+                ImageView leftProgress0 = (ImageView) getView().findViewById(R.id.leftWater0);
+                ImageView rightProgress0 = (ImageView) getView().findViewById(R.id.rightWater0);
+                leftProgress0.setVisibility(View.VISIBLE);
+                rightProgress0.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 1:
+
+                ImageView leftProgress1 = (ImageView) getView().findViewById(R.id.leftWater1);
+                ImageView rightProgress1 = (ImageView) getView().findViewById(R.id.rightWater1);
+                leftProgress1.setVisibility(View.VISIBLE);
+                rightProgress1.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 2:
+
+                ImageView leftProgress2 = (ImageView) getView().findViewById(R.id.leftWater2);
+                ImageView rightProgress2 = (ImageView) getView().findViewById(R.id.rightWater2);
+                leftProgress2.setVisibility(View.VISIBLE);
+                rightProgress2.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 3:
+
+                ImageView leftProgress3 = (ImageView) getView().findViewById(R.id.leftWater3);
+                ImageView rightProgress3 = (ImageView) getView().findViewById(R.id.rightWater3);
+                leftProgress3.setVisibility(View.VISIBLE);
+                rightProgress3.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 4:
+
+                ImageView leftProgress4 = (ImageView) getView().findViewById(R.id.leftWater4);
+                ImageView rightProgress4 = (ImageView) getView().findViewById(R.id.rightWater4);
+                leftProgress4.setVisibility(View.VISIBLE);
+                rightProgress4.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 5:
+
+                ImageView leftProgress5 = (ImageView) getView().findViewById(R.id.leftWater5);
+                ImageView rightProgress5 = (ImageView) getView().findViewById(R.id.rightWater5);
+                leftProgress5.setVisibility(View.VISIBLE);
+                rightProgress5.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 6:
+
+                ImageView leftProgress6 = (ImageView) getView().findViewById(R.id.leftWater6);
+                ImageView rightProgress6 = (ImageView) getView().findViewById(R.id.rightWater6);
+                leftProgress6.setVisibility(View.VISIBLE);
+                rightProgress6.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 7:
+
+                ImageView leftProgress7 = (ImageView) getView().findViewById(R.id.leftWater7);
+                ImageView rightProgress7 = (ImageView) getView().findViewById(R.id.rightWater7);
+                leftProgress7.setVisibility(View.VISIBLE);
+                rightProgress7.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 8:
+
+                ImageView leftProgress8 = (ImageView) getView().findViewById(R.id.leftWater8);
+                ImageView rightProgress8 = (ImageView) getView().findViewById(R.id.rightWater8);
+                leftProgress8.setVisibility(View.VISIBLE);
+                rightProgress8.setVisibility(View.VISIBLE);
+
+                break;
+
+
+            default:
+
+                ImageView leftProgress = (ImageView) getView().findViewById(R.id.leftWater8);
+                ImageView rightProgress = (ImageView) getView().findViewById(R.id.rightWater8);
+                leftProgress.setVisibility(View.VISIBLE);
+                rightProgress.setVisibility(View.VISIBLE);
+
+
+        }
+    }
 }

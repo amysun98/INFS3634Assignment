@@ -1,63 +1,86 @@
 package com.example.wellnessapp;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.ViewGroup;import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.TextView;
+import android.widget.Toast;
 
+public class StepFragment extends Fragment implements SensorEventListener {
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
-
- * Use the {@link StepFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class StepFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    TextView tv_steps;
+    SensorManager sensorManager;
+    boolean running = false;
 
     public StepFragment() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment StepFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static StepFragment newInstance(String param1, String param2) {
-        StepFragment fragment = new StepFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_step, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_step, container, false);
+
+        onViewCreated(rootView);
+        return rootView;
     }
 
+    public void onViewCreated(View rootView) {
+        tv_steps = (TextView) rootView.findViewById(R.id.tv_steps);
 
+        // SensorManager lets you access the device's sensors.
+        sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
 
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        running = true;
+        Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER); // TYPE_STEP_COUNTER a constant describing a step count sensor
+        if(countSensor != null){
+            sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
+        } else {
+            Toast.makeText(getContext(), "Sensor not found!", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        running = true;
+        if (running) {
+            try {
+                int number = Integer.parseInt(((TextView) getView().findViewById(R.id.tv_steps)).getText().toString());
+                if (number != 10000) {
+                    tv_steps.setText(String.valueOf(event.values[0]));
+                } else {
+                    Toast msg = Toast.makeText(getContext(), "Congratulations, you have reached the daily goal!",
+                            Toast.LENGTH_LONG);
+                    msg.show();
+                }
+            } catch (Exception ex) {
+            }
+        }
+
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        running = false;
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
 }
