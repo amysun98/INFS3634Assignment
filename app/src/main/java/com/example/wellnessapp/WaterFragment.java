@@ -178,6 +178,8 @@ public class WaterFragment extends Fragment {
         }
     }
 
+    // referencing https://stackoverflow.com/questions/9343241/passing-data-between-a-fragment-and-its-container-activity for lines 183 to 195
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

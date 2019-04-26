@@ -88,6 +88,8 @@ public class Main2Activity extends AppCompatActivity implements StepFragment.ste
         transaction.commit();
     }
 
+    //referencing https://stackoverflow.com/questions/9343241/passing-data-between-a-fragment-and-its-container-activity for lines 93-113
+
     @Override
     public void stepData(int data) {
         totalSteps = data;
