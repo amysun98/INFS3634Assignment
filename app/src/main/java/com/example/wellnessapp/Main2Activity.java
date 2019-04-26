@@ -19,6 +19,7 @@ public class Main2Activity extends AppCompatActivity implements StepFragment.ste
     public String studyTime;
     public int waterTotal;
     public String sleepAverage;
+    BottomNavigationView navigation;
 
 
     @Override
@@ -32,9 +33,9 @@ public class Main2Activity extends AppCompatActivity implements StepFragment.ste
         loadFragment(new StepFragment());
         loadFragment(new HomeFragment());
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
+        navigation.setItemIconTintList(null);
         navigation.getMenu().getItem(2).setChecked(true);
 
 
@@ -54,6 +55,7 @@ public class Main2Activity extends AppCompatActivity implements StepFragment.ste
             switch (item.getItemId()) {
 
                 case R.id.navigation_sleep:
+
                     fragment = new SleepFragment();
                     loadFragment(fragment);
                     return true;

@@ -10,4 +10,12 @@
     <color name="studyColour">#E7F7D6</color>
     <color name="waterColour">#B7E7FC</color>
     <color name="stepColour">#FFEFD5</color>
+    <color name="inactiveIcon">#A9A9A9</color>
+    <color name="homeIcon">#2F4F4F</color>
+    <color name="waterIcon">#1E90FF</color>
+    <color name="studyIcon">#2E8B57</color>
+    <color name="stepIcon">#FF8C00	</color>
+    <color name="sleepIcon">#9370DB</color>
+
+
 </resources>
