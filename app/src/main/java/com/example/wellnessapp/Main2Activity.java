@@ -15,7 +15,6 @@ import com.example.wellnessapp.SleepFragment;
 
 public class Main2Activity extends AppCompatActivity implements StepFragment.stepData, StudyFragment.studyData, WaterFragment.waterData, ListActivityData.sleepData {
 
-    private TextView mTextMessage;
     public int totalSteps;
     public String studyTime;
     public int waterTotal;
@@ -27,8 +26,6 @@ public class Main2Activity extends AppCompatActivity implements StepFragment.ste
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-
-        mTextMessage = (TextView) findViewById(R.id.message);
         loadFragment(new WaterFragment());
         loadFragment(new ListActivityData());
         loadFragment(new StudyFragment());

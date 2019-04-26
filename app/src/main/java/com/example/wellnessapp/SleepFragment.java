@@ -58,6 +58,8 @@ public class SleepFragment extends Fragment {
         return rootView;
     }
 
+    //https://www.youtube.com/watch?v=aQAIMY-HzL8&t=45s to assist in database
+
     public void onViewCreated(View rootView) {
 
         startH = (EditText) rootView.findViewById(R.id.startTimeHour);

@@ -45,6 +45,7 @@ public class ListActivityData extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        //https://www.youtube.com/watch?v=aQAIMY-HzL8&t=45s to assist in database
         View rootView = inflater.inflate(R.layout.fragment_list_activity_data, container, false);
 
         onViewCreated(rootView);

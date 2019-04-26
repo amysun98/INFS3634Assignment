@@ -47,10 +47,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated (View rootView) {
 
         activityMain = (Main2Activity) getActivity();
-
-        mAdvice = (TextView) rootView.findViewById(R.id.tvAdvice);
-        getAdvice();
-        mAdvice.setText(adviceText);
+        getAdvice(rootView);
 
         mAverageSleep = (TextView) rootView.findViewById(R.id.tvAverageSleep);
         mAverageSleep.setText(activityMain.sleepAverage);
@@ -79,7 +76,7 @@ public class HomeFragment extends Fragment {
 
     }
 
-        public void getAdvice () {
+        public String getAdvice (final View rootView) {
 
 
             RequestQueue requestQueue;
@@ -93,8 +90,9 @@ public class HomeFragment extends Fragment {
                     try {
                         JSONObject obj = response.getJSONObject("slip");
                         String advice = obj.getString("advice");
-
+                        mAdvice = (TextView) rootView.findViewById(R.id.tvAdvice);
                         adviceText = advice;
+                        mAdvice.setText("DailyAdvice: "+ adviceText);
                     } catch (JSONException e) {
 
                         e.printStackTrace();
@@ -111,6 +109,7 @@ public class HomeFragment extends Fragment {
                     }
             );
             requestQueue.add(obreq);
+            return adviceText;
 
         }
     }
