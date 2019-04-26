@@ -5,7 +5,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;import android.hardware.Sensor;
+import android.view.ViewGroup;
+import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
@@ -19,6 +20,7 @@ public class StepFragment extends Fragment implements SensorEventListener {
     TextView tv_steps;
     SensorManager sensorManager;
     boolean running = false;
+    stepData passStepData;
 
     public StepFragment() {
         // Required empty public constructor
@@ -60,6 +62,7 @@ public class StepFragment extends Fragment implements SensorEventListener {
         if (running) {
             try {
                 int number = Integer.parseInt(((TextView) getView().findViewById(R.id.tv_steps)).getText().toString());
+                passStepData.stepData(number);
                 if (number != 10000) {
                     tv_steps.setText(String.valueOf(event.values[0]));
                 } else {
@@ -83,4 +86,20 @@ public class StepFragment extends Fragment implements SensorEventListener {
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        passStepData = (stepData) context;
+        System.err.print("On attach is working");
+    }
+
+    public void onPassStepData (int steps){
+        passStepData.stepData(steps);
+    }
+
+    public interface stepData {
+        public void stepData(int steps);
+    }
+
 }

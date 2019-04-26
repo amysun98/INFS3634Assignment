@@ -6,4 +6,8 @@
     <color name="colorDarkerColour">#F4511E</color>
     <color name="colorMiddleColour">#FF8A65</color>
     <color name="colorLighterColour">#FFCCBC</color>
+    <color name="sleepColour">#E4D6F7</color>
+    <color name="studyColour">#E7F7D6</color>
+    <color name="waterColour">#B7E7FC</color>
+    <color name="stepColour">#FFEFD5</color>
 </resources>

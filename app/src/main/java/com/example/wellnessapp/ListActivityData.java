@@ -35,6 +35,8 @@ public class ListActivityData extends Fragment {
 
     private TextView mTotalSleep;
 
+    sleepData passSleepData;
+
     public ListActivityData() {
         // Required empty public constructor
     }
@@ -58,6 +60,8 @@ public class ListActivityData extends Fragment {
         mTotalSleep.setText(weeklySleepTotal());
 
         populateListView();
+
+        passSleepData.sleepData(weeklySleepTotal());
 
         //toastMessage(weeklySleepTotal());
     }
@@ -151,5 +155,19 @@ public class ListActivityData extends Fragment {
         transaction.replace(R.id.frame_container, fragment);
 //        transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        passSleepData = (sleepData) context;
+    }
+
+    public void onPassStepData (String sleep){
+        passSleepData.sleepData(sleep);
+    }
+
+    public interface sleepData {
+        public void sleepData(String sleep);
     }
 }

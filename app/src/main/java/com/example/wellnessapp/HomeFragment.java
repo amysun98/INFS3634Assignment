@@ -4,50 +4,33 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import com.android.volley.*;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link HomeFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class HomeFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    public TextView mAverageSleep;
+    public TextView mWaterTotal;
+    public TextView mStepTotal;
+    public TextView mStudyTotal;
+    public TextView mAdvice;
+    String adviceText = "";
+    public Main2Activity activityMain;
+
+
 
     public HomeFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(String param1, String param2) {
-        HomeFragment fragment = new HomeFragment();
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
     }
 
@@ -55,10 +38,82 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+
+        onViewCreated(rootView);
+        return rootView;
+    }
+
+    public void onViewCreated (View rootView) {
+
+        activityMain = (Main2Activity) getActivity();
+
+        mAdvice = (TextView) rootView.findViewById(R.id.tvAdvice);
+        getAdvice();
+        mAdvice.setText(adviceText);
+
+        mAverageSleep = (TextView) rootView.findViewById(R.id.tvAverageSleep);
+        mAverageSleep.setText(activityMain.sleepAverage);
+
+        mWaterTotal = (TextView) rootView.findViewById(R.id.tvWaterTotal);
+        if (activityMain.waterTotal < 8) {
+
+            int waterRequired = 8 - activityMain.waterTotal;
+            mWaterTotal.setText("\nYou need to drink " + waterRequired + " more cups of water!\n");
+        } else {
+            mWaterTotal.setText("\nYou're well hydrated today!\n");
+        }
+
+        mStepTotal = (TextView) rootView.findViewById(R.id.tvTotalSteps);
+        if (activityMain.totalSteps < 10000) {
+            mStepTotal.setText("\nYou've taken " + activityMain.totalSteps + "/10000 steps today\n");
+        }
+        else {
+        mStepTotal.setText("\nYou've hit your daily step target!\n");
+        }
+
+        mStudyTotal = (TextView) rootView.findViewById(R.id.tvTotalStudy);
+        mStudyTotal.setText("\n"+ activityMain.studyTime + "\n");
+
+
+
+    }
+
+        public void getAdvice () {
+
+
+            RequestQueue requestQueue;
+            final String url = "https://api.adviceslip.com/advice";
+
+            requestQueue = Volley.newRequestQueue(getActivity());
+
+            JsonObjectRequest obreq = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        JSONObject obj = response.getJSONObject("slip");
+                        String advice = obj.getString("advice");
+
+                        adviceText = advice;
+                    } catch (JSONException e) {
+
+                        e.printStackTrace();
+                    }
+                }
+            },
+
+                    new Response.ErrorListener() {
+                        @Override
+                        // Handles errors that occur due to Volley
+                        public void onErrorResponse(VolleyError error) {
+                            Log.e("Volley", "Error");
+                        }
+                    }
+            );
+            requestQueue.add(obreq);
+
+        }
     }
 
 
 
-
-}

@@ -15,20 +15,16 @@
             android:id="@+id/tvWaterTotal"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="119dp"
-            android:layout_marginLeft="119dp"
-            android:layout_marginTop="174dp"
-            android:layout_marginEnd="131dp"
-            android:layout_marginRight="131dp"
+            android:layout_marginStart="88dp"
+            android:layout_marginLeft="88dp"
+            android:layout_marginTop="111dp"
             android:layout_marginBottom="179dp"
+            android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:visibility="visible"
-            android:gravity="center"
             app:layout_constraintBottom_toTopOf="@+id/fillButton"
-            app:layout_constraintEnd_toStartOf="@+id/rightWater0"
-            app:layout_constraintStart_toEndOf="@+id/leftWater0"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.364" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/waterImage" />
 
         <Button
             android:id="@+id/fillButton"
@@ -46,175 +42,6 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-        android:id="@+id/leftWater0"
-        android:layout_width="15dp"
-        android:layout_height="475dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="124dp"
-        android:layout_marginRight="124dp"
-        android:layout_marginBottom="22dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/water0"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/fillButton"
-        app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/leftWater1"
-            android:layout_width="15dp"
-            android:layout_height="475dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="124dp"
-            android:layout_marginRight="124dp"
-            android:layout_marginBottom="22dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/water1"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fillButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/leftWater2"
-            android:layout_width="15dp"
-            android:layout_height="475dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="124dp"
-            android:layout_marginRight="124dp"
-            android:layout_marginBottom="22dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/water2"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fillButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/leftWater3"
-            android:layout_width="15dp"
-            android:layout_height="475dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="124dp"
-            android:layout_marginRight="124dp"
-            android:layout_marginBottom="22dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/water0"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fillButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/leftWater4"
-            android:layout_width="15dp"
-            android:layout_height="475dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="124dp"
-            android:layout_marginRight="124dp"
-            android:layout_marginBottom="22dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/water0"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fillButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/leftWater5"
-            android:layout_width="15dp"
-            android:layout_height="475dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="124dp"
-            android:layout_marginRight="124dp"
-            android:layout_marginBottom="22dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/water5"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fillButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/leftWater6"
-            android:layout_width="15dp"
-            android:layout_height="475dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="124dp"
-            android:layout_marginRight="124dp"
-            android:layout_marginBottom="22dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/water6"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fillButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/leftWater7"
-            android:layout_width="15dp"
-            android:layout_height="475dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="124dp"
-            android:layout_marginRight="124dp"
-            android:layout_marginBottom="22dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/water7"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fillButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/leftWater8"
-            android:layout_width="15dp"
-            android:layout_height="475dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="124dp"
-            android:layout_marginRight="124dp"
-            android:layout_marginBottom="22dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/water8"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fillButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
             android:id="@+id/rightWater0"
             android:layout_width="15dp"
             android:layout_height="475dp"
@@ -225,7 +52,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="22dp"
             android:scaleType="fitXY"
-            android:src="@drawable/water0"
+            app:srcCompat="@drawable/water0"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -385,11 +212,17 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-
-
-
-
-
+        <ImageView
+            android:id="@+id/waterImage"
+            android:layout_width="123dp"
+            android:layout_height="94dp"
+            android:layout_marginStart="144dp"
+            android:layout_marginLeft="144dp"
+            android:layout_marginTop="140dp"
+            app:srcCompat="@drawable/ic_water_glass"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="TODO" />
 
 
     </android.support.constraint.ConstraintLayout>

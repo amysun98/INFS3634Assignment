@@ -7,14 +7,19 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.support.v4.app.FragmentManager;
 import com.example.wellnessapp.SleepFragment;
 
-public class Main2Activity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity implements StepFragment.stepData, StudyFragment.studyData, WaterFragment.waterData, ListActivityData.sleepData {
 
     private TextView mTextMessage;
+    public int totalSteps;
+    public String studyTime;
+    public int waterTotal;
+    public String sleepAverage;
 
 
     @Override
@@ -24,12 +29,18 @@ public class Main2Activity extends AppCompatActivity {
 
 
         mTextMessage = (TextView) findViewById(R.id.message);
+        loadFragment(new WaterFragment());
+        loadFragment(new ListActivityData());
+        loadFragment(new StudyFragment());
+        loadFragment(new StepFragment());
         loadFragment(new HomeFragment());
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         navigation.getMenu().getItem(2).setChecked(true);
+
+
 
     }
 
@@ -46,27 +57,22 @@ public class Main2Activity extends AppCompatActivity {
             switch (item.getItemId()) {
 
                 case R.id.navigation_sleep:
-                    mTextMessage.setText("sleep");
                     fragment = new SleepFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_water:
-                    mTextMessage.setText("water");
                     fragment = new WaterFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_home:
-                    mTextMessage.setText("Home");
                     fragment = new HomeFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_step:
-                    mTextMessage.setText("step");
                     fragment = new StepFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_study:
-                    mTextMessage.setText("study");
                     fragment = new StudyFragment();
                     loadFragment(fragment);
                     return true;
@@ -84,4 +90,25 @@ public class Main2Activity extends AppCompatActivity {
         //transaction.addToBackStack(null);
         transaction.commit();
     }
+
+    @Override
+    public void stepData(int data) {
+        totalSteps = data;
+    }
+
+    @Override
+    public void studyData(String data) {
+        studyTime = data;
+    }
+
+    @Override
+    public void waterData(int data) {
+        waterTotal = data;
+    }
+
+    @Override
+    public void sleepData(String data) {
+        sleepAverage = data;
+    }
+
 }

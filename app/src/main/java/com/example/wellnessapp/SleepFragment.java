@@ -78,39 +78,45 @@ public class SleepFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                //convert string of textView to number int
-                InputMethodManager inputManager = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                int startingH = Integer.parseInt(startH.getText().toString());
-                int endingH = Integer.parseInt(endH.getText().toString());
-                int startingM = Integer.parseInt(startM.getText().toString());
-                int endingM = Integer.parseInt(endM.getText().toString());
+                try {
+                    //convert string of textView to number int
+                    InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                    int startingH = Integer.parseInt(startH.getText().toString());
+                    int endingH = Integer.parseInt(endH.getText().toString());
+                    int startingM = Integer.parseInt(startM.getText().toString());
+                    int endingM = Integer.parseInt(endM.getText().toString());
 
 
-                //result stored in subtract variable: calculate hours then minutes
+                    //result stored in subtract variable: calculate hours then minutes
 
-                //If sleeping before 12am: sleep time - wake time + 12
-                int subtractH = endingH - startingH +12;
-                //If sleeping after 12am: wake time - sleep time
-                if (endingH > startingH == true) {
-                    subtractH = endingH - startingH;
+                    //If sleeping before 12am: sleep time - wake time + 12
+                    int subtractH = endingH - startingH + 12;
+                    //If sleeping after 12am: wake time - sleep time
+                    if (endingH > startingH == true) {
+                        subtractH = endingH - startingH;
+                    }
+
+
+                    //If waking minutes is larger than sleeping minutes
+                    int subtractM = endingM - startingM;
+                    //If waking minutes is less than sleeping minutes:sleep - wake + 60 and then minus one hour
+                    if (endingM < startingM == true) {
+                        subtractM = endingM - startingM + 60;
+                        subtractH = subtractH - 1;
+                    }
+
+                    amount.setText("Date: " + currentDate + "\n" + " Time Slept: " + String.valueOf(subtractH) + " hrs " + String.valueOf(subtractM) + " mins");
+                    btnAdd.setVisibility(View.VISIBLE);
+                    analyse.setVisibility(View.INVISIBLE);
+                    moon.setVisibility(View.VISIBLE);
+                    sun.setVisibility(View.INVISIBLE);
                 }
 
+            catch (NullPointerException e){
+                toastMessage("You must put something in the field");
 
-                //If waking minutes is larger than sleeping minutes
-                int subtractM = endingM - startingM;
-                //If waking minutes is less than sleeping minutes:sleep - wake + 60 and then minus one hour
-                if (endingM < startingM == true) {
-                    subtractM = endingM - startingM + 60;
-                    subtractH = subtractH - 1;
-                }
-
-                amount.setText("Date: " + currentDate + "\n" + " Time Slept: " + String.valueOf(subtractH) + " hrs " + String.valueOf(subtractM) + " mins");
-                btnAdd.setVisibility(View.VISIBLE);
-                analyse.setVisibility(View.INVISIBLE);
-                moon.setVisibility(View.VISIBLE);
-                sun.setVisibility(View.INVISIBLE);
-            }
+            }}
         });
 
         btnAdd.setOnClickListener(new View.OnClickListener() {

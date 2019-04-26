@@ -56,6 +56,8 @@ public class StudyFragment extends Fragment {
 
     public int total = 1;
 
+    studyData passStudyData;
+
     //Reference 1:
     //Coding in Flow, 2019, "Countdown Timer", Accessed 12th April 2019, https://codinginflow.com/tutorials/android/countdowntimer/part-4-time-input.
 
@@ -97,6 +99,7 @@ public class StudyFragment extends Fragment {
             editor.remove("com.example.studytimer1.dataSharedPref");
             editor.putString("com.example.studytimer1.dateSharedPref", currentTime);
             editor.apply();
+            passStudyData.studyData(mTotalTime.getText().toString());
 
         } else {
             mCounterDate = currentTime;
@@ -107,6 +110,7 @@ public class StudyFragment extends Fragment {
             editor.remove("come.example.studytimer1.dateSharedPref");
             editor.putString("com.example.studytimer1.dateSharedPref", currentTime);
             editor.apply();
+            passStudyData.studyData(mTotalTime.getText().toString());
         }
 
         mInput = rootView.findViewById(R.id.edit_text_input); //fix this
@@ -203,6 +207,7 @@ public class StudyFragment extends Fragment {
                 //Here, the old total time is removed, new value is then added, and then total new value is displayed into the TextView
                 mTotalTime.setText(String.valueOf("You have studied " + totalMinutesSharedPref.getInt("com.example.studytimer1.totalMinutesSharedPref", 0)
                         + " minutes today!"));
+                passStudyData.studyData(mTotalTime.getText().toString());
 
             }
         }.start();
@@ -341,6 +346,20 @@ public class StudyFragment extends Fragment {
                 startTimer();
             }
         }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        passStudyData = (studyData) context;
+    }
+
+    public void onPassStudyData (String study){
+        passStudyData.studyData(study);
+    }
+
+    public interface studyData {
+        public void studyData (String study);
     }
 }
 
