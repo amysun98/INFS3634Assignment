@@ -4,27 +4,32 @@
     <item
         android:id="@+id/navigation_sleep"
         android:icon="@drawable/sleep_bottom_nav"
-        android:title="@string/title_sleep"/>
+        android:title="@string/title_sleep"
+        android:color="@color/sleepIcon"/>
 
     <item
         android:id="@+id/navigation_water"
         android:icon="@drawable/water_bottom_nav"
-        android:title="@string/title_water"/>
+        android:title="@string/title_water"
+        android:color="@color/waterIcon"/>
 
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/home_bottom_nav"
-        android:title="@string/title_home"/>
+        android:title="@string/title_home"
+        android:color="@color/homeIcon"/>
 
     <item
         android:id="@+id/navigation_step"
         android:icon="@drawable/step_bottom_nav"
-        android:title="@string/title_step"/>
+        android:title="@string/title_step"
+        android:color="@color/stepIcon"/>
 
     <item
         android:id="@+id/navigation_study"
         android:icon="@drawable/study_bottom_nav"
-        android:title="@string/title_study"/>
+        android:title="@string/title_study"
+        android:color="@color/studyIcon"/>
 
 
 

@@ -27,6 +27,9 @@ public class Main2Activity extends AppCompatActivity implements StepFragment.ste
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        //preloads all fragments so that the onAttach() method can be called.
+        //this passes all required shared data into the main activity so that it can be accessed by the HomeFragment
+
         loadFragment(new WaterFragment());
         loadFragment(new ListActivityData());
         loadFragment(new StudyFragment());
@@ -91,6 +94,8 @@ public class Main2Activity extends AppCompatActivity implements StepFragment.ste
     }
 
     //referencing https://stackoverflow.com/questions/9343241/passing-data-between-a-fragment-and-its-container-activity for lines 93-113
+
+    //data passed from fragments and collected in the activity
 
     @Override
     public void stepData(int data) {

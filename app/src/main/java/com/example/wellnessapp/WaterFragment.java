@@ -46,6 +46,7 @@ public class WaterFragment extends Fragment {
 
     public void onViewCreated(View rootView) {
 
+        //get SharedPreference and default values for date amd total count
 
         SharedPreferences dateSharedPref = getActivity().getSharedPreferences("com.example.waterCounter.dateSharedPref", MODE_PRIVATE);
 
@@ -54,6 +55,9 @@ public class WaterFragment extends Fragment {
 
         mCounterDate = dateSharedPref.getString("com.example.waterCounter.dateSharedPref", "2019/04/13");
         mWaterCount = wcSharedPref.getInt("com.example.WaterCounter.wcSharedPref", 6);
+
+        //if the fragment is accessed on the same day, it will restore count.
+        // If the date does not match (i.e. fragment accessed the next day) it will reset total count to 0
 
         if (mCounterDate.equals(currentTime)) {
             mWaterCount = wcSharedPref.getInt("com.example.waterCounter.wcSharedPref", 6);
@@ -80,7 +84,7 @@ public class WaterFragment extends Fragment {
 
         }
 
-
+        //increase count when button is pressed
 
         fillButton = (Button) rootView.findViewById(R.id.fillButton);
         fillButton.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +106,7 @@ public class WaterFragment extends Fragment {
 
     }
 
+    //display the relevant side progress bar image depending on water count
     public void getImage (int mWaterCount, View rootView) {
         switch (mWaterCount) {
 

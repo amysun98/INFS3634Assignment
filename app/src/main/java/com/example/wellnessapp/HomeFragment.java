@@ -46,6 +46,8 @@ public class HomeFragment extends Fragment {
 
     public void onViewCreated (View rootView) {
 
+        //on the creation of this fragment, it retrieves data from the activity, assigns to relevant variables and displays accordingly in UI
+
         activityMain = (Main2Activity) getActivity();
         getAdvice(rootView);
 
@@ -76,6 +78,7 @@ public class HomeFragment extends Fragment {
 
     }
 
+    //method accesses AdviceSlip API to display a piece of advice each time the activity is launched
         public String getAdvice (final View rootView) {
 
 
