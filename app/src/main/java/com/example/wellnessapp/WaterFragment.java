@@ -183,6 +183,8 @@ public class WaterFragment extends Fragment {
         }
     }
 
+    //same method with different arguments for OnClick method
+
     public void getImage (int mWaterCount) {
         switch (mWaterCount) {
 
