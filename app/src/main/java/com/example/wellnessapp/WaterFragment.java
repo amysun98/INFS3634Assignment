@@ -95,7 +95,7 @@ public class WaterFragment extends Fragment {
 
                 mWaterCount++;
                 mWaterTotal.setText("You've had " + mWaterCount + " cups of water today!");
-                getImage(mWaterCount, v);
+                getImage(mWaterCount);
                 SharedPreferences.Editor editor = wcSharedPref.edit();
                 editor.remove("com.example.waterCounter.wcSharedPref");
                 editor.putInt("com.example.waterCounter.wcSharedPref", mWaterCount);
@@ -119,7 +119,7 @@ public class WaterFragment extends Fragment {
 
             case 1:
 
-                ImageView rightProgress1 = (ImageView) getActivity().findViewById(R.id.rightWater1);
+                ImageView rightProgress1 = (ImageView) rootView.findViewById(R.id.rightWater1);
                 rightProgress1.setVisibility(View.VISIBLE);
 
                 break;
@@ -182,6 +182,85 @@ public class WaterFragment extends Fragment {
 
         }
     }
+
+    public void getImage (int mWaterCount) {
+        switch (mWaterCount) {
+
+            case 0:
+
+                ImageView rightProgress0 = (ImageView) getActivity().findViewById(R.id.rightWater0);
+                rightProgress0.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 1:
+
+                ImageView rightProgress1 = (ImageView) getActivity().findViewById(R.id.rightWater1);
+                rightProgress1.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 2:
+
+                ImageView rightProgress2 = (ImageView) getActivity().findViewById(R.id.rightWater2);
+                rightProgress2.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 3:
+
+                ImageView rightProgress3 = (ImageView) getActivity().findViewById(R.id.rightWater3);
+                rightProgress3.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 4:
+
+                ImageView rightProgress4 = (ImageView) getActivity().findViewById(R.id.rightWater4);
+                rightProgress4.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 5:
+
+                ImageView rightProgress5 = (ImageView) getActivity().findViewById(R.id.rightWater5);
+                rightProgress5.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 6:
+
+                ImageView rightProgress6 = (ImageView) getActivity().findViewById(R.id.rightWater6);
+                rightProgress6.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 7:
+
+                ImageView rightProgress7 = (ImageView) getActivity().findViewById(R.id.rightWater7);
+                rightProgress7.setVisibility(View.VISIBLE);
+
+                break;
+
+            case 8:
+
+                ImageView rightProgress8 = (ImageView) getActivity().findViewById(R.id.rightWater8);
+                rightProgress8.setVisibility(View.VISIBLE);
+
+                break;
+
+
+            default:
+
+                ImageView rightProgress = (ImageView) getActivity().findViewById(R.id.rightWater8);
+                rightProgress.setVisibility(View.VISIBLE);
+
+
+        }
+    }
+
+
+
 
     // referencing https://stackoverflow.com/questions/9343241/passing-data-between-a-fragment-and-its-container-activity for lines 183 to 195
 
